@@ -1,7 +1,6 @@
 package com.gamelist.dslist.dto;
 
 import com.gamelist.dslist.entities.Game;
-import org.springframework.web.bind.annotation.GetMapping;
 
 public class GameMinDTO {
     private Long id;
