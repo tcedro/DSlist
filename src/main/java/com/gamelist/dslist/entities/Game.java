@@ -1,8 +1,18 @@
 package com.gamelist.dslist.entities;
 
+import jakarta.persistence.*;
+
+import java.util.Objects;
+
+@Entity
+@Table(name="tb_game")
 public class Game {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
+    @Column(name = "game_year")
+    private Integer year;
     private String genre;
     private String platforms;
     private Double Score;
@@ -23,6 +33,14 @@ public class Game {
         this.imgUrl = imgUrl;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     public Long getId() {
@@ -88,4 +106,18 @@ public class Game {
     public void setLongDescription(String longDescription) {
         this.longDescription = longDescription;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return Objects.equals(getId(), game.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
 }
